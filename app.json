@@ -23,10 +23,9 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ultraauth.demoapp"
     },
-    "expo": {
-      "scheme": "com.ultraauth.demoapp"
-    }
+    "scheme": "com.ultraauth.demoapp"
   }
 }
