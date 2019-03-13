@@ -46,19 +46,21 @@ export default class App extends React.Component {
 
   handleUrl (url) {
     const { state, json } = Expo.Linking.parse(url).queryParams;
-    const { ret, message } = JSON.parse(Base64.atob(json));
+    console.log(JSON.parse(Base64.atob(json)));
+    const { code, uafToken } = JSON.parse(Base64.atob(json));
     if (state && this.state.stateKey === state) {
-      const alertText = ret === 0
+      const alertText = code === 0
         ? 'UAF operation completed successfully'
-        : `UAF operation completed with return code ${ret}`;
+        : `UAF operation completed with return code ${code}`;
       Alert.alert('', alertText);
-      this.setState({ token: message });
+      this.setState({ token: uafToken });
       console.log(JSON.parse(Base64.atob(json)));
     }
   }
 
   render () {
     const { token } = this.state;
+    console.log(token);
     return (
       <SafeAreaView style={styles.container}>
         <View style={{ flex: 1, background: 'green' }}>
